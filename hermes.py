@@ -39,7 +39,7 @@ volumeWeight=0.1
 _RUNNING = True
 
 def initGpio()
-    if gpioRelay is not None and GPIO.gpio_function(gpioMute) != GPIO.OUT:
+    if gpioRelay is not None and GPIO.gpio_function(gpioRelay) != GPIO.OUT:
         GPIO.setup(gpioRelay, GPIO.OUT)
         GPIO.output(gpioRelay, 0)
     if GPIO.gpio_function(gpioMute) != GPIO.OUT:
