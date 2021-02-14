@@ -28,6 +28,9 @@ RUN addgroup -g 29 -S piaudio \
     && adduser -S hermes \
 	&& addgroup hermes piaudio \
 	&& addgroup hermes pigpio
+
+# create file to be able to map host asound.conf
+RUN touch /etc/asound.conf
 	
 COPY --from=builder /wheels /wheels
 

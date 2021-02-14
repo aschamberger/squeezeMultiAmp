@@ -19,7 +19,7 @@ sudo docker build -t hermes .
 
 Custom config via env:
 ```
-sudo docker run -d --network host --device /dev/gpiomem --device /dev/snd --env MQTT=localhost:1883 --env LMS=tower:9000 --env SITE_ID=default --env OUTPUT_DEVICE=default --env MAC_ADDRESS=02:00:00:00:00:00 --env GPIO="8;4;8:12:26:20:21::" hermes
+sudo docker run -d --network host --device /dev/gpiomem --device /dev/snd --ipc="host" --mount type=bind,source=/etc/asound.conf,target=/etc/asound.conf,readonly --env MQTT=localhost:1883 --env LMS=tower:9000 --env SITE_ID=default --env OUTPUT_DEVICE=default --env MAC_ADDRESS=02:00:00:00:00:00 --env GPIO="8;4;8:12:26:20:21::" hermes
 ```
 Env variables:
 * MQTT: MQTT broker of e.g. Rhasspy talking the hermes protocol 
@@ -28,6 +28,8 @@ Env variables:
 * OUTPUT_DEVICE: ALSA output device
 * MAC_ADDRESS: mac of LMS player instance
 * GPIO: config for muting amp and power supply (see next section)
+
+Requires access to /dev/gpiomem and /dev/snd devices. The IPC setting is for ALSA dmix to work across containers. The hosts asound.conf is mounted into the container.
 
 ## Power mute feature / GPIO config:
 
