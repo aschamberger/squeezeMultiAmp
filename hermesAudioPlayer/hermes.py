@@ -39,11 +39,11 @@ volumeWeight=0.1
 _RUNNING = True
 
 def initGpio()
-    if gpioRelay is not None and GPIO.gpio_function(gpioMute) != GPIO.OUT:
-	    GPIO.setup(gpioRelay, GPIO.OUT)
+    if gpioRelay is not None and GPIO.gpio_function(gpioRelay) != GPIO.OUT:
+        GPIO.setup(gpioRelay, GPIO.OUT)
         GPIO.output(gpioRelay, 0)
-	if GPIO.gpio_function(gpioMute) != GPIO.OUT:
-	    GPIO.setup(gpioMute, GPIO.OUT)
+    if GPIO.gpio_function(gpioMute) != GPIO.OUT:
+        GPIO.setup(gpioMute, GPIO.OUT)
         GPIO.output(gpioMute, 1)
 
 def powerAmp()
@@ -53,7 +53,7 @@ def powerAmp()
 
 def unpowerAmp()
     GPIO.output(gpioMute, 0)
-	if gpioRelay is not None:
+    if gpioRelay is not None:
         allMute = True
         for gpio in gpioAllMute:
             if gpio and GPIO.input(gpio):
@@ -110,7 +110,7 @@ if __name__ == '__main__':
     print('Starting hermes audio player')
 
     # init GPIO if not done yet
-	initGpio()
+    initGpio()
 
     # load empty wave file to prevent lag on playing first message
     data, fs = soundfile.read('void.wav', dtype='float32')
