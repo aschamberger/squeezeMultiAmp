@@ -1,0 +1,108 @@
+services:
+    squeezelite1:
+        container_name: squeezelite1
+        build:
+            context: ./squeezelite
+        image:squeezelite
+        network_mode: host
+        restart: unless-stopped
+        devices:
+            - "/dev/snd"
+            - "/dev/gpiomem"
+        ipc: host
+        volumes:
+            - type: bind
+              source: /etc/asound.conf
+              target: /etc/asound.conf
+              read_only: true
+        environment:
+            - PLAYER_NAME=Squeeze_1
+            - OUTPUT_DEVICE=fronta
+            - MAC_ADDRESS=02:00:00:00:00:01
+            - GPIO="8;4;18:8:12:26:20:21::"
+    squeezelite2:
+        container_name: squeezelite2
+        extends:
+            service: squeezelite1
+        environment:
+            - PLAYER_NAME=Squeeze_2
+            - OUTPUT_DEVICE=sourrounda
+            - MAC_ADDRESS=02:00:00:00:00:02
+            - GPIO="8;4;8:12:26:20:21::"
+    squeezelite2:
+        container_name: squeezelite3
+        extends:
+            service: squeezelite1
+        environment:
+            - PLAYER_NAME=Squeeze_3
+            - OUTPUT_DEVICE=centera
+            - MAC_ADDRESS=02:00:00:00:00:03
+            - GPIO="8;4;18:8:12:26:20:21::"
+    squeezelite2:
+        container_name: squeezelite4
+        extends:
+            service: squeezelite1
+        environment:
+            - PLAYER_NAME=Squeeze_4
+            - OUTPUT_DEVICE=backa
+            - MAC_ADDRESS=02:00:00:00:00:04
+            - GPIO="8;4;18:8:12:26:20:21::"
+    squeezelite2:
+        container_name: squeezelite5
+        extends:
+            service: squeezelite1
+        environment:
+            - PLAYER_NAME=Squeeze_5
+            - OUTPUT_DEVICE=frontb
+            - MAC_ADDRESS=02:00:00:00:00:05
+            - GPIO="8;4;18:8:12:26:20:21::"
+    squeezelite2:
+        container_name: squeezelite6
+        extends:
+            service: squeezelite1
+        environment:
+            - PLAYER_NAME=Squeeze_6
+            - OUTPUT_DEVICE=sourroundb
+            - MAC_ADDRESS=02:00:00:00:00:06
+            - GPIO="8;4;18:8:12:26:20:21::"
+    squeezelite2:
+        container_name: squeezelite7
+        extends:
+            service: squeezelite1
+        environment:
+            - PLAYER_NAME=Squeeze_7
+            - OUTPUT_DEVICE=centerb
+            - MAC_ADDRESS=02:00:00:00:00:07
+            - GPIO="8;4;18:8:12:26:20:21::"
+    squeezelite2:
+        container_name: squeezelite8
+        extends:
+            service: squeezelite1
+        environment:
+            - PLAYER_NAME=Squeeze_8
+            - OUTPUT_DEVICE=backb
+            - MAC_ADDRESS=02:00:00:00:00:08
+            - GPIO="8;4;18:8:12:26:20:21::"
+    hermes:
+        container_name: hermes1
+        build:
+            context: ./hermesAudioPlayer
+        image: hermes
+        network_mode: host
+        restart: unless-stopped
+        devices:
+            - "/dev/snd"
+            - "/dev/gpiomem"
+        ipc: host
+        volumes:
+            - type: bind
+              source: /etc/asound.conf
+              target: /etc/asound.conf
+              read_only: true
+        environment:
+            - MQTT=localhost:1883
+            - LMS=tower:9000
+            - SITE_ID=hermes-one
+            - OUTPUT_DEVICE=fronta
+            - MAC_ADDRESS=02:00:00:00:00:01
+            - GPIO="8;4;18:8:12:26:20:21::"   
