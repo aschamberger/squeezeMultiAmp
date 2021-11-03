@@ -33,12 +33,16 @@ gpioConfig = args.split(';')
 gpioMute = gpioConfig[0] if gpioConfig[0] else None
 gpioRelay = gpioConfig[1] if gpioConfig[1] else None
 gpioAllMute = gpioConfig[2].split(':') if gpioConfig[2] else None
+gpioSpeakerSwitcher = gpioConfig[3] if gpioConfig[3] else None
 
 volumeWeight=0.1
 
 _RUNNING = True
 
 def initGpio()
+    if gpioSpeakerSwitcher is not None and GPIO.gpio_function(gpioSpeakerSwitcher) != GPIO.OUT:
+        GPIO.setup(gpioSpeakerSwitcher, GPIO.OUT)
+        GPIO.output(gpioSpeakerSwitcher, 0)
     if gpioRelay is not None and GPIO.gpio_function(gpioRelay) != GPIO.OUT:
         GPIO.setup(gpioRelay, GPIO.OUT)
         GPIO.output(gpioRelay, 0)
@@ -49,10 +53,14 @@ def initGpio()
 def powerAmp()
     if gpioRelay is not None and not GPIO.input(gpioRelay):
         GPIO.output(gpioRelay, 1)
-    GPIO.output(gpioMute, 1)
+    if gpioSpeakerSwitcher is not None:
+        GPIO.output(gpioSpeakerSwitcher, 1)
+    GPIO.output(gpioMute, 0)
 
 def unpowerAmp()
-    GPIO.output(gpioMute, 0)
+    GPIO.output(gpioMute, 1)
+    if gpioSpeakerSwitcher is not None:
+        GPIO.output(gpioSpeakerSwitcher, 0)
     if gpioRelay is not None:
         allMute = True
         for gpio in gpioAllMute:

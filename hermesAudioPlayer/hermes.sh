@@ -8,4 +8,4 @@ MAC_ADDRESS=${MAC_ADDRESS:-02:00:00:00:00:00}
 GPIO=${GPIO:-;;}
 
 # run hermes audio player with user hermes
-exec su-exec hermes python3 /usr/local/bin/hermes.py "$MQTT" "$LMS" "$SITE_ID" "$OUTPUT_DEVICE" "$MAC_ADDRESS" "$GPIO"
+exec su-exec hermes python3 /usr/local/bin/hermes.py $MQTT $LMS $SITE_ID $OUTPUT_DEVICE $MAC_ADDRESS $GPIO

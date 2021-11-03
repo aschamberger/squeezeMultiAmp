@@ -19,7 +19,7 @@ sudo docker build -t hermes .
 
 Custom config via env:
 ```
-sudo docker run -d --network host --device /dev/gpiomem --device /dev/snd --ipc="host" --mount type=bind,source=/etc/asound.conf,target=/etc/asound.conf,readonly --env MQTT=localhost:1883 --env LMS=tower:9000 --env SITE_ID=default --env OUTPUT_DEVICE=default --env MAC_ADDRESS=02:00:00:00:00:00 --env GPIO="8;4;8:12:26:20:21::" hermes
+sudo docker run -d --network host --device /dev/gpiomem --device /dev/snd --ipc="host" --mount type=bind,source=/etc/asound.conf,target=/etc/asound.conf,readonly --env MQTT=localhost:1883 --env LMS=tower:9000 --env SITE_ID=default --env OUTPUT_DEVICE=default --env MAC_ADDRESS=02:00:00:00:00:00 --env GPIO="15;7;15:18:22:31:32:36:35:40" hermes
 ```
 Env variables:
 * MQTT: MQTT broker of e.g. Rhasspy talking the hermes protocol 
@@ -33,11 +33,11 @@ Requires access to /dev/gpiomem and /dev/snd devices. The IPC setting is for ALS
 
 ## Power mute feature / GPIO config:
 
-A power mute feature can mute/power down the connected amp via a GPIO (first parameter). The second parameter allows to power down the power supply if all connected amps (listed in third parameter) are off.
+A power mute feature can mute/power down the connected amp via a GPIO (first parameter). The second parameter allows to power down the power supply if all connected amps (listed in third parameter) are off. The optional speaker switcher GPIO is used to trigger an external 5V relais changing speakers between sqeezeMultiAmp and another amp in the room.
 
-Pi GPIO config is done using board GPIO numbers (not BCM oder WiringPi numbering scheme) - `<current amp GPIO>;<power relay GPIO>;<all up to 8 amp GPIOs>`:
+Pi GPIO config is done using board GPIO numbers (not BCM oder WiringPi numbering scheme) - `<current amp GPIO>;<power relay GPIO>;<all up to 8 amp GPIOs>`(;<speaker switcher GPIO>):
 ```
-8;4;8:12:26:20:21::
+15;7;15:18:22:31:32:36:35:40;11
 ```
 
 ## Docker dev
@@ -79,5 +79,3 @@ Links:
 * Hermes playBytes: https://docs.snips.ai/reference/hermes#playing-a-wav-sound
 * RPI.GPIO docs/examples: https://sourceforge.net/p/raspberry-gpio-python/wiki/BasicUsage/
 * Source of [void.wav](http://www.wc3c.net/attachment.php?s=21454f5b8be64c07fdfb9b06530e6aa7&attachmentid=39290&d=1230381401): http://www.wc3c.net/showthread.php?t=103828
-
-

@@ -1,4 +1,4 @@
-FROM alpine:3.13 as builder
+FROM alpine:3.14.2 as builder
 
 ENV LANG C.UTF-8
 
@@ -15,12 +15,12 @@ RUN pip install wheel \
     && pip wheel --wheel-dir=/wheels paho-mqtt\
     && pip wheel --wheel-dir=/wheels https://github.com/aschamberger/LMSTools/archive/development.tar.gz
 
-FROM alpine:3.13
+FROM alpine:3.14.2
 
 ENV LANG C.UTF-8
 
 RUN apk update \
-    && apk add --no-cache su-exec python3 py3-pip py3-numpy libffi portaudio libsndfile
+    && apk add --no-cache tini su-exec python3 py3-pip py3-numpy libffi portaudio libsndfile
 
 # add group piaudio and pigpio with gid of underlying raspberry os groups
 RUN addgroup -g 29 -S piaudio \
@@ -46,4 +46,5 @@ COPY hermes.py /usr/local/bin/hermes.py
 COPY hermes.sh /usr/local/bin/hermes.sh
 RUN chmod +x /usr/local/bin/hermes.sh
 
+ENTRYPOINT [ "/sbin/tini", "--" ]
 CMD [ "hermes.sh" ]
