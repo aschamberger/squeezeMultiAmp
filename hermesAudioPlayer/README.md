@@ -7,6 +7,7 @@ Features:
 * un-/mute amp and power supply via [RPi.GPIO](https://pypi.org/project/RPi.GPIO/)
 * un-/mute Logitech Media Server players via [LMStools](https://github.com/aschamberger/LMSTools)
 * based on Alpine Linux
+* Container init via [Tini](https://github.com/krallin/tini)
 * rootless via [su-exec](https://github.com/ncopa/su-exec)
 
 ## Docker build
