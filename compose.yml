@@ -15,74 +15,97 @@ services:
               source: /etc/asound.conf
               target: /etc/asound.conf
               read_only: true
+            - type: bind
+              source: /home/pi/squeezenames/squeeze1.name
+              target: /config/squeeze.name
         environment:
-            - PLAYER_NAME=Squeeze_1
-            - OUTPUT_DEVICE=fronta
+            - OUTPUT_DEVICE=ch1
             - MAC_ADDRESS=02:00:00:00:00:01
-            - GPIO="8;4;18:8:12:26:20:21::"
+            - GPIO="15;7;15:18:22:31:32:36:35:40;11"
     squeezelite2:
         container_name: squeezelite2
         extends:
             service: squeezelite1
+        volumes:
+            - type: bind
+              source: /home/pi/squeezenames/squeeze2.name
+              target: /config/squeeze.name
         environment:
-            - PLAYER_NAME=Squeeze_2
-            - OUTPUT_DEVICE=sourrounda
+            - OUTPUT_DEVICE=ch2
             - MAC_ADDRESS=02:00:00:00:00:02
-            - GPIO="8;4;8:12:26:20:21::"
-    squeezelite2:
+            - GPIO="18;7;15:18:22:31:32:36:35:40"
+    squeezelite3:
         container_name: squeezelite3
         extends:
             service: squeezelite1
+        volumes:
+            - type: bind
+              source: /home/pi/squeezenames/squeeze3.name
+              target: /config/squeeze.name
         environment:
-            - PLAYER_NAME=Squeeze_3
-            - OUTPUT_DEVICE=centera
+            - OUTPUT_DEVICE=ch3
             - MAC_ADDRESS=02:00:00:00:00:03
-            - GPIO="8;4;18:8:12:26:20:21::"
-    squeezelite2:
+            - GPIO="22;7;15:18:22:31:32:36:35:40"
+    squeezelite4:
         container_name: squeezelite4
         extends:
             service: squeezelite1
+        volumes:
+            - type: bind
+              source: /home/pi/squeezenames/squeeze4.name
+              target: /config/squeeze.name
         environment:
-            - PLAYER_NAME=Squeeze_4
-            - OUTPUT_DEVICE=backa
+            - OUTPUT_DEVICE=ch4
             - MAC_ADDRESS=02:00:00:00:00:04
-            - GPIO="8;4;18:8:12:26:20:21::"
-    squeezelite2:
+            - GPIO="31;7;15:18:22:31:32:36:35:40"
+    squeezelite5:
         container_name: squeezelite5
         extends:
             service: squeezelite1
+        volumes:
+            - type: bind
+              source: /home/pi/squeezenames/squeeze5.name
+              target: /config/squeeze.name
         environment:
-            - PLAYER_NAME=Squeeze_5
-            - OUTPUT_DEVICE=frontb
+            - OUTPUT_DEVICE=ch5
             - MAC_ADDRESS=02:00:00:00:00:05
-            - GPIO="8;4;18:8:12:26:20:21::"
-    squeezelite2:
+            - GPIO="32;7;15:18:22:31:32:36:35:40"
+    squeezelite6:
         container_name: squeezelite6
         extends:
             service: squeezelite1
+        volumes:
+            - type: bind
+              source: /home/pi/squeezenames/squeeze6.name
+              target: /config/squeeze.name
         environment:
-            - PLAYER_NAME=Squeeze_6
-            - OUTPUT_DEVICE=sourroundb
+            - OUTPUT_DEVICE=ch6
             - MAC_ADDRESS=02:00:00:00:00:06
-            - GPIO="8;4;18:8:12:26:20:21::"
-    squeezelite2:
+            - GPIO="36;7;15:18:22:31:32:36:35:40"
+   squeezelite7:
         container_name: squeezelite7
         extends:
             service: squeezelite1
+        volumes:
+            - type: bind
+              source: /home/pi/squeezenames/squeeze7.name
+              target: /config/squeeze.name
         environment:
-            - PLAYER_NAME=Squeeze_7
-            - OUTPUT_DEVICE=centerb
+            - OUTPUT_DEVICE=ch7
             - MAC_ADDRESS=02:00:00:00:00:07
-            - GPIO="8;4;18:8:12:26:20:21::"
-    squeezelite2:
+            - GPIO="35;7;15:18:22:31:32:36:35:40"
+    squeezelite8:
         container_name: squeezelite8
         extends:
             service: squeezelite1
+        volumes:
+            - type: bind
+              source: /home/pi/squeezenames/squeeze8.name
+              target: /config/squeeze.name
         environment:
-            - PLAYER_NAME=Squeeze_8
-            - OUTPUT_DEVICE=backb
+            - OUTPUT_DEVICE=ch8
             - MAC_ADDRESS=02:00:00:00:00:08
-            - GPIO="8;4;18:8:12:26:20:21::"
+            - GPIO="40;7;15:18:22:31:32:36:35:40"
     hermes:
         container_name: hermes1
         build:
@@ -103,6 +126,6 @@ services:
             - MQTT=localhost:1883
             - LMS=tower:9000
             - SITE_ID=hermes-one
-            - OUTPUT_DEVICE=fronta
+            - OUTPUT_DEVICE=ch1
             - MAC_ADDRESS=02:00:00:00:00:01
-            - GPIO="8;4;18:8:12:26:20:21::"   
+            - GPIO="15;7;15:18:22:31:32:36:35:40"
