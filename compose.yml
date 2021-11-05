@@ -3,7 +3,7 @@ services:
         container_name: squeezelite1
         build:
             context: ./squeezelite
-        image:squeezelite
+        image: squeezelite
         network_mode: host
         restart: unless-stopped
         devices:
