@@ -21,7 +21,8 @@ services:
         environment:
             - OUTPUT_DEVICE=ch1
             - MAC_ADDRESS=02:00:00:00:00:01
-            - GPIO=15;7;15:18:22:31:32:36:35:40;11
+#            - GPIO=15;7;15:18:22:31:32:36:35:40;11
+            - GPIO=15;7;15:18:22:31:32:36:35;11
     squeezelite2:
         container_name: squeezelite2
         extends:
@@ -33,7 +34,8 @@ services:
         environment:
             - OUTPUT_DEVICE=ch2
             - MAC_ADDRESS=02:00:00:00:00:02
-            - GPIO=18;7;15:18:22:31:32:36:35:40
+#            - GPIO=18;7;15:18:22:31:32:36:35:40
+            - GPIO=18;7;15:18:22:31:32:36:35
     squeezelite3:
         container_name: squeezelite3
         extends:
@@ -45,7 +47,8 @@ services:
         environment:
             - OUTPUT_DEVICE=ch3
             - MAC_ADDRESS=02:00:00:00:00:03
-            - GPIO=22;7;15:18:22:31:32:36:35:40
+#            - GPIO=22;7;15:18:22:31:32:36:35:40
+            - GPIO=22;7;15:18:22:31:32:36:35
     squeezelite4:
         container_name: squeezelite4
         extends:
@@ -57,7 +60,8 @@ services:
         environment:
             - OUTPUT_DEVICE=ch4
             - MAC_ADDRESS=02:00:00:00:00:04
-            - GPIO=31;7;15:18:22:31:32:36:35:40
+#            - GPIO=31;7;15:18:22:31:32:36:35:40
+            - GPIO=31;7;15:18:22:31:32:36:35
     squeezelite5:
         container_name: squeezelite5
         extends:
@@ -69,7 +73,8 @@ services:
         environment:
             - OUTPUT_DEVICE=ch5
             - MAC_ADDRESS=02:00:00:00:00:05
-            - GPIO=32;7;15:18:22:31:32:36:35:40
+#            - GPIO=32;7;15:18:22:31:32:36:35:40
+            - GPIO=32;7;15:18:22:31:32:36:35
     squeezelite6:
         container_name: squeezelite6
         extends:
@@ -81,8 +86,9 @@ services:
         environment:
             - OUTPUT_DEVICE=ch6
             - MAC_ADDRESS=02:00:00:00:00:06
-            - GPIO=36;7;15:18:22:31:32:36:35:40
-   squeezelite7:
+#            - GPIO=36;7;15:18:22:31:32:36:35:40
+            - GPIO=36;7;15:18:22:31:32:36:35
+    squeezelite7:
         container_name: squeezelite7
         extends:
             service: squeezelite1
@@ -93,7 +99,8 @@ services:
         environment:
             - OUTPUT_DEVICE=ch7
             - MAC_ADDRESS=02:00:00:00:00:07
-            - GPIO=35;7;15:18:22:31:32:36:35:40
+#            - GPIO=35;7;15:18:22:31:32:36:35:40
+            - GPIO=35;7;15:18:22:31:32:36:35
     squeezelite8:
         container_name: squeezelite8
         extends:
@@ -105,7 +112,7 @@ services:
         environment:
             - OUTPUT_DEVICE=ch8
             - MAC_ADDRESS=02:00:00:00:00:08
-            - GPIO=40;7;15:18:22:31:32:36:35:40
+ #           - GPIO=40;7;15:18:22:31:32:36:35:40
     hermes:
         container_name: hermes1
         build:
