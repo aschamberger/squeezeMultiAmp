@@ -1,6 +1,7 @@
 services:
     squeezelite_tpl:
         container_name: squeezelite_tpl
+        profiles: ["tpl"]
         build:
             context: ./squeezelite
         image: squeezelite
@@ -19,6 +20,7 @@ services:
     squeezelite1:
         extends:
             service: squeezelite_tpl
+        container_name: squeezelite1
         profiles: ["${CH1_SQUEEZELITE}"]
         volumes:
             - type: bind
