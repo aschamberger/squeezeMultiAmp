@@ -1,7 +1,6 @@
 services:
-    squeezelite1:
-        container_name: squeezelite1
-        profiles: ["${CH1_SQUEEZELITE}"]
+    squeezelite_tpl:
+        container_name: squeezelite_tpl
         build:
             context: ./squeezelite
         image: squeezelite
@@ -17,6 +16,11 @@ services:
               source: /etc/asound.conf
               target: /etc/asound.conf
               read_only: true
+    squeezelite1:
+        extends:
+            service: squeezelite_tpl
+        profiles: ["${CH1_SQUEEZELITE}"]
+        volumes:
             - type: bind
               source: /home/pi/squeezenames/squeeze1.name
               target: /config/squeeze.name
@@ -25,12 +29,11 @@ services:
             - MAC_ADDRESS=02:00:00:00:00:01
             - GPIO=${GPIO_CH1_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH1_SPS}
     squeezelite2:
+        extends:
+            service: squeezelite_tpl
         container_name: squeezelite2
         profiles: ["${CH2_SQUEEZELITE}"]
-        extends:
-            service: squeezelite1
         volumes:
-            - /etc/opt/eq:/etc/opt/eq
             - type: bind
               source: /home/pi/squeezenames/squeeze2.name
               target: /config/squeeze.name
@@ -39,10 +42,10 @@ services:
             - MAC_ADDRESS=02:00:00:00:00:02
             - GPIO=${GPIO_CH2_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH2_SPS}
     squeezelite3:
+        extends:
+            service: squeezelite_tpl
         container_name: squeezelite3
         profiles: ["${CH3_SQUEEZELITE}"]
-        extends:
-            service: squeezelite1
         volumes:
             - type: bind
               source: /home/pi/squeezenames/squeeze3.name
@@ -52,10 +55,10 @@ services:
             - MAC_ADDRESS=02:00:00:00:00:03
             - GPIO=${GPIO_CH3_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH3_SPS}
     squeezelite4:
+        extends:
+            service: squeezelite_tpl
         container_name: squeezelite4
         profiles: ["${CH4_SQUEEZELITE}"]
-        extends:
-            service: squeezelite1
         volumes:
             - type: bind
               source: /home/pi/squeezenames/squeeze4.name
@@ -65,10 +68,10 @@ services:
             - MAC_ADDRESS=02:00:00:00:00:04
             - GPIO=${GPIO_CH4_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH4_SPS}
     squeezelite5:
+        extends:
+            service: squeezelite_tpl
         container_name: squeezelite5
         profiles: ["${CH5_SQUEEZELITE}"]
-        extends:
-            service: squeezelite1
         volumes:
             - type: bind
               source: /home/pi/squeezenames/squeeze5.name
@@ -78,10 +81,10 @@ services:
             - MAC_ADDRESS=02:00:00:00:00:05
             - GPIO=${GPIO_CH5_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH5_SPS}
     squeezelite6:
+        extends:
+            service: squeezelite_tpl
         container_name: squeezelite6
         profiles: ["${CH6_SQUEEZELITE}"]
-        extends:
-            service: squeezelite1
         volumes:
             - type: bind
               source: /home/pi/squeezenames/squeeze6.name
@@ -91,10 +94,10 @@ services:
             - MAC_ADDRESS=02:00:00:00:00:06
             - GPIO=${GPIO_CH6_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH6_SPS}
     squeezelite7:
+        extends:
+            service: squeezelite_tpl
         container_name: squeezelite7
         profiles: ["${CH7_SQUEEZELITE}"]
-        extends:
-            service: squeezelite1
         volumes:
             - type: bind
               source: /home/pi/squeezenames/squeeze7.name
@@ -104,10 +107,10 @@ services:
             - MAC_ADDRESS=02:00:00:00:00:07
             - GPIO=${GPIO_CH7_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH7_SPS}
     squeezelite8:
+        extends:
+            service: squeezelite_tpl
         container_name: squeezelite8
         profiles: ["${CH8_SQUEEZELITE}"]
-        extends:
-            service: squeezelite1
         volumes:
             - type: bind
               source: /home/pi/squeezenames/squeeze8.name
