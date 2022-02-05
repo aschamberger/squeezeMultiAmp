@@ -1,6 +1,7 @@
 services:
     squeezelite1:
         container_name: squeezelite1
+        profiles: ["${CH1_SQUEEZELITE}"]
         build:
             context: ./squeezelite
         image: squeezelite
@@ -11,6 +12,7 @@ services:
             - "/dev/gpiomem"
         ipc: host
         volumes:
+            - /etc/opt/eq:/etc/opt/eq
             - type: bind
               source: /etc/asound.conf
               target: /etc/asound.conf
@@ -19,25 +21,26 @@ services:
               source: /home/pi/squeezenames/squeeze1.name
               target: /config/squeeze.name
         environment:
-            - OUTPUT_DEVICE=ch1
+            - OUTPUT_DEVICE=${OUTPUT_CH1}
             - MAC_ADDRESS=02:00:00:00:00:01
-#            - GPIO=15;7;15:18:22:31:32:36:35:40;11
-            - GPIO=15;7;15:18:22:31:32:36:35;11
+            - GPIO=${GPIO_CH1_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH1_SPS}
     squeezelite2:
         container_name: squeezelite2
+        profiles: ["${CH2_SQUEEZELITE}"]
         extends:
             service: squeezelite1
         volumes:
+            - /etc/opt/eq:/etc/opt/eq
             - type: bind
               source: /home/pi/squeezenames/squeeze2.name
               target: /config/squeeze.name
         environment:
-            - OUTPUT_DEVICE=ch2
+            - OUTPUT_DEVICE=${OUTPUT_CH2}
             - MAC_ADDRESS=02:00:00:00:00:02
-#            - GPIO=18;7;15:18:22:31:32:36:35:40
-            - GPIO=18;7;15:18:22:31:32:36:35
+            - GPIO=${GPIO_CH2_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH2_SPS}
     squeezelite3:
         container_name: squeezelite3
+        profiles: ["${CH3_SQUEEZELITE}"]
         extends:
             service: squeezelite1
         volumes:
@@ -45,12 +48,12 @@ services:
               source: /home/pi/squeezenames/squeeze3.name
               target: /config/squeeze.name
         environment:
-            - OUTPUT_DEVICE=ch3
+            - OUTPUT_DEVICE=${OUTPUT_CH3}
             - MAC_ADDRESS=02:00:00:00:00:03
-#            - GPIO=22;7;15:18:22:31:32:36:35:40
-            - GPIO=22;7;15:18:22:31:32:36:35
+            - GPIO=${GPIO_CH3_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH3_SPS}
     squeezelite4:
         container_name: squeezelite4
+        profiles: ["${CH4_SQUEEZELITE}"]
         extends:
             service: squeezelite1
         volumes:
@@ -58,12 +61,12 @@ services:
               source: /home/pi/squeezenames/squeeze4.name
               target: /config/squeeze.name
         environment:
-            - OUTPUT_DEVICE=ch4
+            - OUTPUT_DEVICE=${OUTPUT_CH4}
             - MAC_ADDRESS=02:00:00:00:00:04
-#            - GPIO=31;7;15:18:22:31:32:36:35:40
-            - GPIO=31;7;15:18:22:31:32:36:35
+            - GPIO=${GPIO_CH4_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH4_SPS}
     squeezelite5:
         container_name: squeezelite5
+        profiles: ["${CH5_SQUEEZELITE}"]
         extends:
             service: squeezelite1
         volumes:
@@ -71,12 +74,12 @@ services:
               source: /home/pi/squeezenames/squeeze5.name
               target: /config/squeeze.name
         environment:
-            - OUTPUT_DEVICE=ch5
+            - OUTPUT_DEVICE=${OUTPUT_CH5}
             - MAC_ADDRESS=02:00:00:00:00:05
-#            - GPIO=32;7;15:18:22:31:32:36:35:40
-            - GPIO=32;7;15:18:22:31:32:36:35
+            - GPIO=${GPIO_CH5_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH5_SPS}
     squeezelite6:
         container_name: squeezelite6
+        profiles: ["${CH6_SQUEEZELITE}"]
         extends:
             service: squeezelite1
         volumes:
@@ -84,12 +87,12 @@ services:
               source: /home/pi/squeezenames/squeeze6.name
               target: /config/squeeze.name
         environment:
-            - OUTPUT_DEVICE=ch6
+            - OUTPUT_DEVICE=${OUTPUT_CH6}
             - MAC_ADDRESS=02:00:00:00:00:06
-#            - GPIO=36;7;15:18:22:31:32:36:35:40
-            - GPIO=36;7;15:18:22:31:32:36:35
+            - GPIO=${GPIO_CH6_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH6_SPS}
     squeezelite7:
         container_name: squeezelite7
+        profiles: ["${CH7_SQUEEZELITE}"]
         extends:
             service: squeezelite1
         volumes:
@@ -97,12 +100,12 @@ services:
               source: /home/pi/squeezenames/squeeze7.name
               target: /config/squeeze.name
         environment:
-            - OUTPUT_DEVICE=ch7
+            - OUTPUT_DEVICE=${OUTPUT_CH7}
             - MAC_ADDRESS=02:00:00:00:00:07
-#            - GPIO=35;7;15:18:22:31:32:36:35:40
-            - GPIO=35;7;15:18:22:31:32:36:35
+            - GPIO=${GPIO_CH7_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH7_SPS}
     squeezelite8:
         container_name: squeezelite8
+        profiles: ["${CH8_SQUEEZELITE}"]
         extends:
             service: squeezelite1
         volumes:
@@ -110,11 +113,12 @@ services:
               source: /home/pi/squeezenames/squeeze8.name
               target: /config/squeeze.name
         environment:
-            - OUTPUT_DEVICE=ch8
+            - OUTPUT_DEVICE=${OUTPUT_CH8}
             - MAC_ADDRESS=02:00:00:00:00:08
- #           - GPIO=40;7;15:18:22:31:32:36:35:40
-    hermes:
+            - GPIO=${GPIO_CH8_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH8_SPS}
+    hermes1:
         container_name: hermes1
+        profiles: ["${CH1_HERMES}"]
         build:
             context: ./hermesAudioPlayer
         image: hermes
@@ -125,6 +129,7 @@ services:
             - "/dev/gpiomem"
         ipc: host
         volumes:
+            - /etc/opt/eq:/etc/opt/eq
             - type: bind
               source: /etc/asound.conf
               target: /etc/asound.conf
@@ -133,6 +138,6 @@ services:
               source: /home/pi/squeezenames/squeeze1.name
               target: /config/squeeze.name
         environment:
-            - OUTPUT_DEVICE=ch1
+            - OUTPUT_DEVICE=${OUTPUT_CH1}
             - MAC_ADDRESS=02:00:00:00:00:01
-            - GPIO=15;7;15:18:22:31:32:36:35:40
+            - GPIO=${GPIO_CH1_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH1_SPS}
