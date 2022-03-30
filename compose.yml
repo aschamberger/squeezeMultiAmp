@@ -1,4 +1,25 @@
 services:
+    supervisior:
+        container_name: supervisior
+        build:
+            context: ./supervisior
+        image: supervisior
+        privileged: true
+        network_mode: host
+        restart: unless-stopped
+        devices:
+            - "/dev/snd"
+        ipc: host
+        volumes:
+            - /dev/bus/usb:/dev/bus/usb
+            - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket
+            - /var/run/docker.sock:/var/run/docker.sock:ro
+            - /home/pi:/home/pi:ro
+            - /etc/opt/eq:/etc/opt/eq
+            - type: bind
+              source: /etc/asound.conf
+              target: /etc/asound.conf
+              read_only: true
     squeezelite_tpl:
         container_name: squeezelite_tpl
         profiles: ["tpl"]
@@ -121,9 +142,9 @@ services:
             - OUTPUT_DEVICE=${OUTPUT_CH8}
             - MAC_ADDRESS=02:00:00:00:00:08
             - GPIO=${GPIO_CH8_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH8_SPS}
-    hermes1:
-        container_name: hermes1
-        profiles: ["${CH1_HERMES}"]
+    hermes_tpl:
+        container_name: hermes_tpl
+        profiles: ["tpl"]
         build:
             context: ./hermesAudioPlayer
         image: hermes
@@ -139,6 +160,12 @@ services:
               source: /etc/asound.conf
               target: /etc/asound.conf
               read_only: true
+    hermes1:
+        extends:
+            service: hermes_tpl
+        container_name: hermes1
+        profiles: ["${CH1_HERMES}"]
+        volumes:
             - type: bind
               source: /home/pi/squeezenames/squeeze1.name
               target: /config/squeeze.name
@@ -146,3 +173,94 @@ services:
             - OUTPUT_DEVICE=${OUTPUT_CH1}
             - MAC_ADDRESS=02:00:00:00:00:01
             - GPIO=${GPIO_CH1_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH1_SPS}
+    hermes2:
+        extends:
+            service: hermes_tpl
+        container_name: hermes1
+        profiles: ["${CH2_HERMES}"]
+        volumes:
+            - type: bind
+              source: /home/pi/squeezenames/squeeze2.name
+              target: /config/squeeze.name
+        environment:
+            - OUTPUT_DEVICE=${OUTPUT_CH2}
+            - MAC_ADDRESS=02:00:00:00:00:02
+            - GPIO=${GPIO_CH2_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH2_SPS}
+    hermes3:
+        extends:
+            service: hermes_tpl
+        container_name: hermes1
+        profiles: ["${CH3_HERMES}"]
+        volumes:
+            - type: bind
+              source: /home/pi/squeezenames/squeeze3.name
+              target: /config/squeeze.name
+        environment:
+            - OUTPUT_DEVICE=${OUTPUT_CH3}
+            - MAC_ADDRESS=02:00:00:00:00:03
+            - GPIO=${GPIO_CH3_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH3_SPS}
+    hermes4:
+        extends:
+            service: hermes_tpl
+        container_name: hermes1
+        profiles: ["${CH4_HERMES}"]
+        volumes:
+            - type: bind
+              source: /home/pi/squeezenames/squeeze4.name
+              target: /config/squeeze.name
+        environment:
+            - OUTPUT_DEVICE=${OUTPUT_CH4}
+            - MAC_ADDRESS=02:00:00:00:00:04
+            - GPIO=${GPIO_CH4_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH4_SPS}
+    hermes5:
+        extends:
+            service: hermes_tpl
+        container_name: hermes1
+        profiles: ["${CH5_HERMES}"]
+        volumes:
+            - type: bind
+              source: /home/pi/squeezenames/squeeze5.name
+              target: /config/squeeze.name
+        environment:
+            - OUTPUT_DEVICE=${OUTPUT_CH5}
+            - MAC_ADDRESS=02:00:00:00:00:05
+            - GPIO=${GPIO_CH5_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH5_SPS}
+    hermes6:
+        extends:
+            service: hermes_tpl
+        container_name: hermes1
+        profiles: ["${CH6_HERMES}"]
+        volumes:
+            - type: bind
+              source: /home/pi/squeezenames/squeeze6.name
+              target: /config/squeeze.name
+        environment:
+            - OUTPUT_DEVICE=${OUTPUT_CH6}
+            - MAC_ADDRESS=02:00:00:00:00:06
+            - GPIO=${GPIO_CH6_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH6_SPS}
+    hermes7:
+        extends:
+            service: hermes_tpl
+        container_name: hermes1
+        profiles: ["${CH7_HERMES}"]
+        volumes:
+            - type: bind
+              source: /home/pi/squeezenames/squeeze7.name
+              target: /config/squeeze.name
+        environment:
+            - OUTPUT_DEVICE=${OUTPUT_CH7}
+            - MAC_ADDRESS=02:00:00:00:00:07
+            - GPIO=${GPIO_CH7_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH7_SPS}
+    hermes8:
+        extends:
+            service: hermes_tpl
+        container_name: hermes1
+        profiles: ["${CH8_HERMES}"]
+        volumes:
+            - type: bind
+              source: /home/pi/squeezenames/squeeze8.name
+              target: /config/squeeze.name
+        environment:
+            - OUTPUT_DEVICE=${OUTPUT_CH8}
+            - MAC_ADDRESS=02:00:00:00:00:08
+            - GPIO=${GPIO_CH8_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH8_SPS}
