@@ -1,0 +1,5 @@
+SUBSYSTEM=="usb", DRIVER=="hub", MODE="0664", GROUP="sound"
+# Linux 6.0 or later (its ok to have this block present for older Linux kernels):
+SUBSYSTEM=="usb", DRIVER=="hub", \
+  RUN+="/bin/sh -c \"chown -f root:sound $sys$devpath/*-port*/disable || true\"" \
+  RUN+="/bin/sh -c \"chmod -f 660 $sys$devpath/*-port*/disable || true\""
