@@ -1,6 +1,6 @@
 # hermesAudioPlayer Docker
 
-Audio playback docker to run on Raspberry Pi for the [https://github.com/snipsco/hermes-protocol](hermes-protocol) used by e.g. [Rhasspy Voice Assistant](https://rhasspy.readthedocs.io/en/latest/). 
+Audio playback docker to run on Raspberry Pi for the [https://docs.snips.ai/reference/hermes](hermes-protocol) used by e.g. [Rhasspy Voice Assistant](https://rhasspy.readthedocs.io/en/latest/). 
 
 Features:
 * play audio coming from MQTT via [paho-mqtt](https://pypi.org/project/paho-mqtt/) & [sounddevice](https://python-sounddevice.readthedocs.io)

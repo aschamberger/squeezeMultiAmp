@@ -1,4 +1,4 @@
-FROM alpine:3.14.2 as builder
+FROM alpine:3.16 as builder
 
 ENV LANG C.UTF-8
 
@@ -12,10 +12,11 @@ RUN pip install wheel \
 #    && pip wheel --wheel-dir=/wheels numpy \
     && pip wheel --wheel-dir=/wheels sounddevice \
     && pip wheel --wheel-dir=/wheels soundfile \
-    && pip wheel --wheel-dir=/wheels paho-mqtt\
+    && pip wheel --wheel-dir=/wheels paho-mqtt \
+    && pip wheel --wheel-dir=/wheels zeroconf \
     && pip wheel --wheel-dir=/wheels https://github.com/aschamberger/LMSTools/archive/development.tar.gz
 
-FROM alpine:3.14.2
+FROM alpine:3.16
 
 ENV LANG C.UTF-8
 
@@ -39,6 +40,7 @@ RUN pip install --no-index --find-links=/wheels RPi.GPIO \
     && pip install --no-index --find-links=/wheels sounddevice \
     && pip install --no-index --find-links=/wheels soundfile \
     && pip install --no-index --find-links=/wheels paho-mqtt \
+    && pip install --no-index --find-links=/wheels zeroconf \
     && pip install --no-index --find-links=/wheels LMSTools
 
 COPY void.wav /usr/local/bin/void.wav
