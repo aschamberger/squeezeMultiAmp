@@ -45,6 +45,7 @@ services:
         environment:
             - HASS_HOST=${HASS_HOST}
             - HASS_BEARER=${HASS_BEARER}
+            - LMS_HOST=${LMS_HOST}
     squeezelite1:
         extends:
             service: squeezelite_tpl
@@ -57,7 +58,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH1}
             - MAC_ADDRESS=02:00:00:00:00:01
-            - POWER=${GPIO_CH1_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH1_SPS};${HASS_SWITCH_CH1}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_A_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_A_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH1_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH1_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH1_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH1}
     squeezelite2:
         extends:
             service: squeezelite_tpl
@@ -70,7 +78,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH2}
             - MAC_ADDRESS=02:00:00:00:00:02
-            - POWER=${GPIO_CH2_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH2_SPS};${HASS_SWITCH_CH2}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_A_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_A_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH2_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH2_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH2_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH2}
     squeezelite3:
         extends:
             service: squeezelite_tpl
@@ -83,7 +98,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH3}
             - MAC_ADDRESS=02:00:00:00:00:03
-            - POWER=${GPIO_CH3_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH3_SPS};${HASS_SWITCH_CH3}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_A_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_A_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH3_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH3_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH3_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH3}
     squeezelite4:
         extends:
             service: squeezelite_tpl
@@ -96,7 +118,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH4}
             - MAC_ADDRESS=02:00:00:00:00:04
-            - POWER=${GPIO_CH4_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH4_SPS};${HASS_SWITCH_CH4}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_A_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_A_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH4_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH4_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH4_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH4}
     squeezelite5:
         extends:
             service: squeezelite_tpl
@@ -109,7 +138,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH5}
             - MAC_ADDRESS=02:00:00:00:00:05
-            - POWER=${GPIO_CH5_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH5_SPS};${HASS_SWITCH_CH5}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_B_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_B_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH5_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH5_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH5_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH5}
     squeezelite6:
         extends:
             service: squeezelite_tpl
@@ -122,7 +158,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH6}
             - MAC_ADDRESS=02:00:00:00:00:06
-            - POWER=${GPIO_CH6_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH6_SPS};${HASS_SWITCH_CH6}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_B_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_B_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH6_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH6_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH6_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH6}
     squeezelite7:
         extends:
             service: squeezelite_tpl
@@ -135,7 +178,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH7}
             - MAC_ADDRESS=02:00:00:00:00:07
-            - POWER=${GPIO_CH7_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH7_SPS};${HASS_SWITCH_CH7}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_B_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_B_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH7_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH7_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH7_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH7}
     squeezelite8:
         extends:
             service: squeezelite_tpl
@@ -148,7 +198,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH8}
             - MAC_ADDRESS=02:00:00:00:00:08
-            - POWER=${GPIO_CH8_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH8_SPS};${HASS_SWITCH_CH8}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_B_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_B_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH8_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH8_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH8_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH8}
     squeezelite9:
         extends:
             service: squeezelite_tpl
@@ -161,7 +218,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH9}
             - MAC_ADDRESS=02:00:00:00:00:09
-            - POWER=${GPIO_CH9_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH9_SPS};${HASS_SWITCH_CH9}
+            - GPIO_PSU_RELAY=
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=
+            - GPIO_AMP_MUTE_ON_PLAYERS=
+            - GPIO_MUTE=${GPIO_CH9_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH9_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH9_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH9}
     hermes_tpl:
         container_name: hermes_tpl
         profiles: ["tpl"]
@@ -197,7 +261,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH1}
             - MAC_ADDRESS=02:00:00:00:00:01
-            - POWER=${GPIO_CH1_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH1_SPS};${HASS_SWITCH_CH1}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_A_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_A_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH1_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH1_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH1_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH1}
             - HERMES_SITE_ID=${HERMES_SITE_ID_CH1}
     hermes2:
         extends:
@@ -211,7 +282,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH2}
             - MAC_ADDRESS=02:00:00:00:00:02
-            - POWER=${GPIO_CH2_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH2_SPS};${HASS_SWITCH_CH2}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_A_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_A_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH2_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH2_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH2_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH2}
             - HERMES_SITE_ID=${HERMES_SITE_ID_CH2}
     hermes3:
         extends:
@@ -225,7 +303,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH3}
             - MAC_ADDRESS=02:00:00:00:00:03
-            - POWER=${GPIO_CH3_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH3_SPS};${HASS_SWITCH_CH3}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_A_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_A_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH3_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH3_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH3_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH3}
             - HERMES_SITE_ID=${HERMES_SITE_ID_CH3}
     hermes4:
         extends:
@@ -239,7 +324,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH4}
             - MAC_ADDRESS=02:00:00:00:00:04
-            - POWER=${GPIO_CH4_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH4_SPS};${HASS_SWITCH_CH4}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_A_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_A_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH4_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH4_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH4_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH4}
             - HERMES_SITE_ID=${HERMES_SITE_ID_CH4}
     hermes5:
         extends:
@@ -253,7 +345,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH5}
             - MAC_ADDRESS=02:00:00:00:00:05
-            - POWER=${GPIO_CH5_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH5_SPS};${HASS_SWITCH_CH5}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_B_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_B_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH5_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH5_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH5_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH5}
             - HERMES_SITE_ID=${HERMES_SITE_ID_CH5}
     hermes6:
         extends:
@@ -267,7 +366,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH6}
             - MAC_ADDRESS=02:00:00:00:00:06
-            - POWER=${GPIO_CH6_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH6_SPS};${HASS_SWITCH_CH6}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_B_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_B_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH6_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH6_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH6_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH6}
             - HERMES_SITE_ID=${HERMES_SITE_ID_CH6}
     hermes7:
         extends:
@@ -281,7 +387,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH7}
             - MAC_ADDRESS=02:00:00:00:00:07
-            - POWER=${GPIO_CH7_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH7_SPS};${HASS_SWITCH_CH7}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_B_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_B_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH7_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH7_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH7_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH7}
             - HERMES_SITE_ID=${HERMES_SITE_ID_CH7}
     hermes8:
         extends:
@@ -295,7 +408,14 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH8}
             - MAC_ADDRESS=02:00:00:00:00:08
-            - POWER=${GPIO_CH8_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH8_SPS};${HASS_SWITCH_CH8}
+            - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_B_SHUTDOWN_ON_AMP_MUTE}
+            - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_B_MUTE_ON_PLAYERS}
+            - GPIO_MUTE=${GPIO_CH8_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH8_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH8_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH8}
             - HERMES_SITE_ID=${HERMES_SITE_ID_CH8}
     hermes9:
         extends:
@@ -309,5 +429,12 @@ services:
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH9}
             - MAC_ADDRESS=02:00:00:00:00:09
-            - POWER=${GPIO_CH9_MUTE};${GPIO_RELAY};${GPIO_RELAY_CHANNELS};${GPIO_CH9_SPS};${HASS_SWITCH_CH9}
+            - GPIO_PSU_RELAY=
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=
+            - GPIO_AMP_MUTE_ON_PLAYERS=
+            - GPIO_MUTE=${GPIO_CH9_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH9_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH9_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH9}
             - HERMES_SITE_ID=${HERMES_SITE_ID_CH9}
