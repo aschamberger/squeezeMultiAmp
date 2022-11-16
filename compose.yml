@@ -38,6 +38,7 @@ services:
         ipc: host
         volumes:
             - /etc/opt/eq:/etc/opt/eq
+            - /var/lock:/var/lock
             - type: bind
               source: /etc/asound.conf
               target: /etc/asound.conf
@@ -240,6 +241,7 @@ services:
         ipc: host
         volumes:
             - /etc/opt/eq:/etc/opt/eq
+            - /var/lock:/var/lock
             - type: bind
               source: /etc/asound.conf
               target: /etc/asound.conf
