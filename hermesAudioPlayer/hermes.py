@@ -140,8 +140,8 @@ if __name__ == '__main__':
         siteId = 'default'
     
     outputDevice = os.getenv('OUTPUT_DEVICE')
-    macAddress = os.getenv('OUTPUT_DEVICE')
-    power = os.getenv('OUTPUT_DEVICE')
+    macAddress = os.getenv('MAC_ADDRESS')
+    power = os.getenv('POWER')
     hassHost = os.getenv('HASS_HOST')
     hassBearer = os.getenv('HASS_BEARER')       
 
