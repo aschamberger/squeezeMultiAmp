@@ -11,6 +11,7 @@ services:
             - "/dev/snd"
         ipc: host
         volumes:
+            - /usr/local/src/sma:/usr/local/src/sma
             - /dev/bus/usb:/dev/bus/usb
             - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket
             - /var/run/docker.sock:/var/run/docker.sock:ro
