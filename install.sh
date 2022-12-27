@@ -48,7 +48,7 @@ rm -r squeezeMultiAmp-main
 
 # Create name files and make sure they are writeable by the containers
 sudo mkdir -p /etc/opt/squeezelite
-sudo cp /usr/local/src/sma/squeezenames /etc/opt/squeezelite
+sudo cp /usr/local/src/sma/squeezenames/* /etc/opt/squeezelite
 sudo chmod ugo+rwx /etc/opt/squeezelite/*
 
 # Prepare .env file
@@ -63,26 +63,17 @@ sudo mkdir -p /etc/opt/eq
 sudo chmod 777 /etc/opt/eq
 sudo chown -R root:audio /etc/opt/eq
 sudo chmod g+s /etc/opt/eq
-sudo amixer -D ch1_eq sset '00. 31 Hz' 66
-sudo amixer -D ch2_eq sset '00. 31 Hz' 66
-sudo amixer -D ch3_eq sset '00. 31 Hz' 66
-sudo amixer -D ch4_eq sset '00. 31 Hz' 66
-sudo amixer -D ch5_eq sset '00. 31 Hz' 66
-sudo amixer -D ch6_eq sset '00. 31 Hz' 66
-sudo amixer -D ch7_eq sset '00. 31 Hz' 66
-sudo amixer -D ch8_eq sset '00. 31 Hz' 66
-sudo chmod -R 766 /etc/opt/eq/*
 
 # Changing ALSA card IDs with udev
 sudo cp /usr/local/src/sma/85-my-usb-audio.rules /etc/udev/rules.d/85-my-usb-audio.rules
 sudo udevadm control --reload-rules
 sudo udevadm trigger -c remove -s sound
 sudo udevadm trigger -c add -s sound
-cat /proc/asound/cards
 
 # allow power cycling the USB hub from the supervisior
 sudo cp /usr/local/src/sma/52-usb.rules /etc/udev/rules.d/52-usb.rules
 sudo udevadm trigger --attr-match=subsystem=usb
 
 # allow passwordless reboot/shutdown from the supervisior
-sudo cp /usr/local/src/00-reboot-shutdown.rules /etc/polkit-1/rules.d/00-reboot-shutdown.rules
+sudo mkdir -p /etc/polkit-1/rules.d/
+sudo cp /usr/local/src/sma/00-reboot-shutdown.rules /etc/polkit-1/rules.d/00-reboot-shutdown.rules

@@ -1,9 +1,9 @@
 services:
-    supervisior:
-        container_name: supervisior
+    supervisor:
+        container_name: supervisor
         build:
-            context: ./supervisior
-        image: supervisior
+            context: ./supervisor
+        image: supervisor
         privileged: true
         network_mode: host
         restart: unless-stopped
