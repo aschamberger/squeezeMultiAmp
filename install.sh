@@ -66,14 +66,16 @@ sudo chmod g+s /etc/opt/eq
 
 # Changing ALSA card IDs with udev
 sudo cp /usr/local/src/sma/85-my-usb-audio.rules /etc/udev/rules.d/85-my-usb-audio.rules
+
+# Allow power cycling the USB hub from the supervisior
+sudo cp /usr/local/src/sma/52-usb.rules /etc/udev/rules.d/52-usb.rules
+
+# Reload and apply udev rules
 sudo udevadm control --reload-rules
 sudo udevadm trigger -c remove -s sound
 sudo udevadm trigger -c add -s sound
-
-# allow power cycling the USB hub from the supervisior
-sudo cp /usr/local/src/sma/52-usb.rules /etc/udev/rules.d/52-usb.rules
 sudo udevadm trigger --attr-match=subsystem=usb
 
-# allow passwordless reboot/shutdown from the supervisior
+# Allow passwordless reboot/shutdown from the supervisior
 sudo mkdir -p /etc/polkit-1/rules.d/
 sudo cp /usr/local/src/sma/00-reboot-shutdown.rules /etc/polkit-1/rules.d/00-reboot-shutdown.rules

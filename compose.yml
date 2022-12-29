@@ -1,6 +1,7 @@
 services:
     supervisor:
         container_name: supervisor
+        profiles: ["off"]
         build:
             context: ./supervisor
         image: supervisor
@@ -72,6 +73,7 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite2
+        depends_on: squeezelite1
         profiles: ["${CH2_SQUEEZELITE}"]
         volumes:
             - type: bind
@@ -92,6 +94,7 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite3
+        depends_on: squeezelite2
         profiles: ["${CH3_SQUEEZELITE}"]
         volumes:
             - type: bind
@@ -112,6 +115,7 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite4
+        depends_on: squeezelite3
         profiles: ["${CH4_SQUEEZELITE}"]
         volumes:
             - type: bind
@@ -132,6 +136,7 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite5
+        depends_on: squeezelite4
         profiles: ["${CH5_SQUEEZELITE}"]
         volumes:
             - type: bind
@@ -152,6 +157,7 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite6
+        depends_on: squeezelite5
         profiles: ["${CH6_SQUEEZELITE}"]
         volumes:
             - type: bind
@@ -172,6 +178,7 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite7
+        depends_on: squeezelite6
         profiles: ["${CH7_SQUEEZELITE}"]
         volumes:
             - type: bind
@@ -192,6 +199,7 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite8
+        depends_on: squeezelite7
         profiles: ["${CH8_SQUEEZELITE}"]
         volumes:
             - type: bind
@@ -212,7 +220,8 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite9
-        profiles: ["${CH8_SQUEEZELITE}"]
+        profiles: ["${CH9_SQUEEZELITE}"]
+        depends_on: squeezelite8
         volumes:
             - type: bind
               source: /etc/opt/squeezelite/squeeze9.name
