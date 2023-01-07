@@ -223,6 +223,28 @@ services:
             - GPIO_SHUTDOWN=${GPIO_CH8_SHUTDOWN}
             - GPIO_SPS=${GPIO_CH8_SPS}
             - HASS_SWITCH=${HASS_SWITCH_CH8}
+    squeezelite9:
+        extends:
+            service: squeezelite_tpl
+        container_name: squeezelite9
+        profiles: ["${CH9_SQUEEZELITE}"]
+        depends_on:  
+            - squeezelite8
+        volumes:
+            - type: bind
+              source: /etc/opt/squeezelite/squeeze9.name
+              target: /config/squeeze.name
+        environment:
+            - OUTPUT_DEVICE=${OUTPUT_CH9}
+            - MAC_ADDRESS=02:00:00:00:00:09
+            - GPIO_PSU_RELAY=
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=
+            - GPIO_AMP_MUTE_ON_PLAYERS=
+            - GPIO_MUTE=${GPIO_CH9_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH9_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH9_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH9}
     hermes_tpl:
         container_name: hermes_tpl
         profiles: ["tpl"]
@@ -415,3 +437,24 @@ services:
             - GPIO_SPS=${GPIO_CH8_SPS}
             - HASS_SWITCH=${HASS_SWITCH_CH8}
             - HERMES_SITE_ID=${HERMES_SITE_ID_CH8}
+    hermes9:
+        extends:
+            service: hermes_tpl
+        container_name: hermes1
+        profiles: ["${CH9_HERMES}"]
+        volumes:
+            - type: bind
+              source: /etc/opt/squeezelite/squeeze9.name
+              target: /config/squeeze.name
+        environment:
+            - OUTPUT_DEVICE=${OUTPUT_CH9}
+            - MAC_ADDRESS=02:00:00:00:00:09
+            - GPIO_PSU_RELAY=
+            - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=
+            - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=
+            - GPIO_AMP_MUTE_ON_PLAYERS=
+            - GPIO_MUTE=${GPIO_CH9_MUTE}
+            - GPIO_SHUTDOWN=${GPIO_CH9_SHUTDOWN}
+            - GPIO_SPS=${GPIO_CH9_SPS}
+            - HASS_SWITCH=${HASS_SWITCH_CH9}
+            - HERMES_SITE_ID=${HERMES_SITE_ID_CH9}

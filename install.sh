@@ -56,7 +56,7 @@ sudo mkdir -p /etc/opt/compose
 sudo cp /usr/local/src/sma/default.env /etc/opt/compose/.env
 
 # Custom asound.conf + ALSA output level
-sudo cp /usr/local/src/sma/two_4ch+pi.asound.conf /etc/asound.conf
+sudo cp /usr/local/src/sma/two_4ch.asound.conf /etc/asound.conf
 
 # Default equalizer config with proper permissions created that squeezelite dockers can run rootless.
 sudo mkdir -p /etc/opt/eq
