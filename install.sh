@@ -64,6 +64,11 @@ sudo chmod 777 /etc/opt/eq
 sudo chown -R root:audio /etc/opt/eq
 sudo chmod g+s /etc/opt/eq
 
+# Set permissions to be able to store from container
+sudo chmod 777 /var/lib/alsa/
+sudo chown -R root:audio /var/lib/alsa/
+sudo chmod g+s /var/lib/alsa/
+
 # Changing ALSA card IDs with udev
 sudo cp /usr/local/src/sma/85-my-usb-audio.rules /etc/udev/rules.d/85-my-usb-audio.rules
 

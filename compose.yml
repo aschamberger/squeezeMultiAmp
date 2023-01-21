@@ -1,11 +1,10 @@
 services:
     supervisor:
         container_name: supervisor
-        profiles: ["off"]
+#        profiles: ["off"]
         build:
             context: ./supervisor
         image: supervisor
-        privileged: true
         network_mode: host
         restart: unless-stopped
         devices:
@@ -19,13 +18,16 @@ services:
             - /etc/opt/compose:/etc/opt/compose:ro
             - /etc/opt/eq:/etc/opt/eq
             - /etc/opt/squeezelite:/etc/opt/squeezelite
+            - /var/lib/alsa:/var/lib/alsa
             - type: bind
               source: /etc/asound.conf
               target: /etc/asound.conf
               read_only: true
-            - type: bind
-              source: /var/lib/alsa/asound.state
-              target: /var/lib/alsa/asound.state
+        environment:
+            - HASS_HOST=${HASS_HOST}
+            - HASS_BEARER=${HASS_BEARER}
+            - MQTT_HOST=${MQTT_HOST}
+            - LMS_HOST=${LMS_HOST}
     squeezelite_tpl:
         container_name: squeezelite_tpl
         profiles: ["tpl"]
