@@ -1,7 +1,7 @@
 services:
     supervisor:
         container_name: supervisor
-#        profiles: ["off"]
+        profiles: ["supervisor"]
         build:
             context: ./supervisor
         image: supervisor
