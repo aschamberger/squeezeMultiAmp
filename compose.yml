@@ -23,11 +23,6 @@ services:
               source: /etc/asound.conf
               target: /etc/asound.conf
               read_only: true
-        environment:
-            - HASS_HOST=${HASS_HOST}
-            - HASS_BEARER=${HASS_BEARER}
-            - MQTT_HOST=${MQTT_HOST}
-            - LMS_HOST=${LMS_HOST}
     squeezelite_tpl:
         container_name: squeezelite_tpl
         profiles: ["tpl"]
