@@ -87,5 +87,7 @@ sudo udevadm trigger -c add -s sound
 sudo udevadm trigger --attr-match=subsystem=usb
 
 # Allow passwordless reboot/shutdown from the supervisior
-sudo mkdir -p /etc/polkit-1/rules.d/
-sudo cp /usr/local/src/sma/00-reboot-shutdown.rules /etc/polkit-1/rules.d/00-reboot-shutdown.rules
+# old polkit version in pi os does not support new config format
+#sudo mkdir -p /etc/polkit-1/rules.d/
+#sudo cp /usr/local/src/sma/00-reboot-shutdown.rules /etc/polkit-1/rules.d/00-reboot-shutdown.rules
+sudo cp /usr/local/src/sma/00-reboot-shutdown.pkla /etc/polkit-1/localauthority/50-local.d/00-reboot-shutdown.pkla

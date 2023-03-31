@@ -1,0 +1,6 @@
+[Allow users in audio group to shutdown/reboot]
+Identity=unix-group:audio
+Action=org.freedesktop.login1.power-off-multiple-sessions;org.freedesktop.login1.reboot-multiple-sessions
+ResultAny=yes
+ResultInactive=yes
+ResultActive=yes

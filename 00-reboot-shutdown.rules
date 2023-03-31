@@ -1,7 +1,7 @@
+/* Allow users to shutdown/reboot */
 polkit.addRule(function(action, subject) {
-    if ((action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
-            action.id == "org.freedesktop.login1.power-off-multiple-sessions") &&
-        subject.isInGroup("audio")) {
+    if (action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+            action.id == "org.freedesktop.login1.power-off-multiple-sessions") {
         return polkit.Result.YES;
     }
 });
