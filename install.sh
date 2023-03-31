@@ -43,17 +43,22 @@ sudo chmod ugo+rw /usr/local/src/sma
 cd /usr/local/src/sma
 wget https://github.com/aschamberger/squeezeMultiAmp/archive/main.zip
 unzip main.zip
+rm main.zip
 mv squeezeMultiAmp-main/* .
 rm -r squeezeMultiAmp-main
 
 # Create name files and make sure they are writeable by the containers
 sudo mkdir -p /etc/opt/squeezelite
 sudo cp /usr/local/src/sma/squeezenames/* /etc/opt/squeezelite
-sudo chmod ugo+rwx /etc/opt/squeezelite/*
+sudo chmod -R ugo+rwx /etc/opt/squeezelite
+sudo chown -R root:audio /etc/opt/squeezelite
 
 # Prepare .env file
 sudo mkdir -p /etc/opt/compose
 sudo cp /usr/local/src/sma/default.env /etc/opt/compose/.env
+sudo chmod -R ugo+rwx /etc/opt/compose
+sudo chown -R root:audio /etc/opt/compose
+sudo chmod g+s /etc/opt/compose
 
 # Custom asound.conf + ALSA output level
 sudo cp /usr/local/src/sma/two_4ch.asound.conf /etc/asound.conf
@@ -65,9 +70,9 @@ sudo chown -R root:audio /etc/opt/eq
 sudo chmod g+s /etc/opt/eq
 
 # Set permissions to be able to store from container
-sudo chmod 777 /var/lib/alsa/
-sudo chown -R root:audio /var/lib/alsa/
-sudo chmod g+s /var/lib/alsa/
+sudo chmod 777 /var/lib/alsa
+sudo chown -R root:audio /var/lib/alsa
+sudo chmod -R g+w /var/lib/alsa
 
 # Changing ALSA card IDs with udev
 sudo cp /usr/local/src/sma/85-my-usb-audio.rules /etc/udev/rules.d/85-my-usb-audio.rules

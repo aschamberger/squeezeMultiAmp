@@ -7,6 +7,11 @@ services:
         image: supervisor
         network_mode: host
         restart: unless-stopped
+        logging:
+            driver: "local"
+            options:
+                max-size: "10m"
+                max-file: 3
         devices:
             - "/dev/snd"
         ipc: host
@@ -15,7 +20,7 @@ services:
             - /dev/bus/usb:/dev/bus/usb
             - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket
             - /var/run/docker.sock:/var/run/docker.sock:ro
-            - /etc/opt/compose:/etc/opt/compose:ro
+            - /etc/opt/compose:/etc/opt/compose
             - /etc/opt/eq:/etc/opt/eq
             - /etc/opt/squeezelite:/etc/opt/squeezelite
             - /var/lib/alsa:/var/lib/alsa
@@ -31,6 +36,11 @@ services:
         image: squeezelite
         network_mode: host
         restart: unless-stopped
+        logging:
+            driver: "local"
+            options:
+                max-size: "10m"
+                max-file: 3
         devices:
             - "/dev/snd"
             - "/dev/gpiomem"
@@ -46,6 +56,7 @@ services:
             - HASS_HOST=${HASS_HOST}
             - HASS_BEARER=${HASS_BEARER}
             - LMS_HOST=${LMS_HOST}
+            - DEBUG_POWER_MUTE_SCRIPT=${DEBUG_POWER_MUTE_SCRIPT}
     squeezelite1:
         extends:
             service: squeezelite_tpl
@@ -70,7 +81,7 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite2
-        depends_on: 
+        depends_on:
             - squeezelite1
         profiles: ["${CH2_SQUEEZELITE}"]
         volumes:
@@ -92,7 +103,7 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite3
-        depends_on: 
+        depends_on:
             - squeezelite2
         profiles: ["${CH3_SQUEEZELITE}"]
         volumes:
@@ -114,7 +125,7 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite4
-        depends_on: 
+        depends_on:
             - squeezelite3
         profiles: ["${CH4_SQUEEZELITE}"]
         volumes:
@@ -136,7 +147,7 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite5
-        depends_on: 
+        depends_on:
             - squeezelite4
         profiles: ["${CH5_SQUEEZELITE}"]
         volumes:
@@ -158,7 +169,7 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite6
-        depends_on: 
+        depends_on:
             - squeezelite5
         profiles: ["${CH6_SQUEEZELITE}"]
         volumes:
@@ -180,7 +191,7 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite7
-        depends_on:  
+        depends_on:
             - squeezelite6
         profiles: ["${CH7_SQUEEZELITE}"]
         volumes:
@@ -202,7 +213,7 @@ services:
         extends:
             service: squeezelite_tpl
         container_name: squeezelite8
-        depends_on:  
+        depends_on:
             - squeezelite7
         profiles: ["${CH8_SQUEEZELITE}"]
         volumes:
@@ -228,6 +239,11 @@ services:
         image: hermes
         network_mode: host
         restart: unless-stopped
+        logging:
+            driver: "local"
+            options:
+                max-size: "10m"
+                max-file: 3
         devices:
             - "/dev/snd"
             - "/dev/gpiomem"
