@@ -1,22 +1,30 @@
-FROM alpine:3.16 as builder
+FROM alpine:3.17 as builder
 
 ENV LANG C.UTF-8
 
 RUN apk update \
-    && apk add --no-cache build-base python3 python3-dev py3-pip py3-numpy libffi-dev portaudio libsndfile
+    && apk add --no-cache build-base alsa-lib-dev linux-headers python3 python3-dev py3-pip py3-numpy libffi-dev portaudio libsndfile
+
+RUN mkdir -p /usr/local/src
+
+RUN cd /usr/local/src \
+    && wget https://github.com/raedwulf/alsaequal/archive/refs/heads/master.zip -O alsaequal.zip \
+    && unzip alsaequal.zip \
+    && cd alsaequal-master \
+    && make \
+    && mkdir -p /usr/lib/alsa-lib \
+    && make install
 
 RUN mkdir /wheels
 
 RUN pip install wheel \
     && pip wheel --wheel-dir=/wheels RPi.GPIO==0.7.1a3 \
-#    && pip wheel --wheel-dir=/wheels numpy \
     && pip wheel --wheel-dir=/wheels sounddevice \
     && pip wheel --wheel-dir=/wheels soundfile \
-    && pip wheel --wheel-dir=/wheels paho-mqtt \
     && pip wheel --wheel-dir=/wheels zeroconf \
     && pip wheel --wheel-dir=/wheels https://github.com/aschamberger/LMSTools/archive/development.tar.gz
 
-FROM alpine:3.16
+FROM alpine:3.17
 
 ENV LANG C.UTF-8
 
@@ -36,12 +44,13 @@ RUN touch /etc/asound.conf
 COPY --from=builder /wheels /wheels
 
 RUN pip install --no-index --find-links=/wheels RPi.GPIO \
-#    && pip install --no-index --find-links=/wheels numpy \
     && pip install --no-index --find-links=/wheels sounddevice \
     && pip install --no-index --find-links=/wheels soundfile \
-    && pip install --no-index --find-links=/wheels paho-mqtt \
     && pip install --no-index --find-links=/wheels zeroconf \
     && pip install --no-index --find-links=/wheels LMSTools
+
+RUN pip install \
+    asyncio-mqtt
 
 COPY void.wav /usr/local/bin/void.wav
 COPY hermes.py /usr/local/bin/hermes.py

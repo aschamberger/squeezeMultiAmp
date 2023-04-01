@@ -3,6 +3,7 @@
 # https://docs.snips.ai/reference/hermes#playing-a-wav-sound
 
 import os
+import fcntl
 import sys
 import argparse
 import time
@@ -19,7 +20,19 @@ volumeWeight=0.1
 
 _RUNNING = True
 
+def flockAquire(lockFile)
+    fd = os.open(lockFile, os.O_RDWR | os.O_CREAT)
+    # https://docs.python.org/3/library/fcntl.html
+    fcntl.flock(fd, fcntl.LOCK_EX)
+    return fd
+
+def flockRelease(fd):
+    fcntl.flock(fd, fcntl.LOCK_UN)
+    os.close(fd)
+    return None
+
 def initGpio()
+    fd = flockAquire("/var/lock/gpio")
     if gpioSpeakerSwitcher is not None and GPIO.gpio_function(gpioSpeakerSwitcher) != GPIO.OUT:
         GPIO.setup(gpioSpeakerSwitcher, GPIO.OUT)
         GPIO.output(gpioSpeakerSwitcher, 0)
@@ -29,8 +42,10 @@ def initGpio()
     if gpioMute is not None and GPIO.gpio_function(gpioMute) != GPIO.OUT:
         GPIO.setup(gpioMute, GPIO.OUT)
         GPIO.output(gpioMute, 1)
+    flockRelease(fd)
 
 def powerAmp()
+    fd = flockAquire("/var/lock/gpio")
     if gpioRelay is not None and not GPIO.input(gpioRelay):
         GPIO.output(gpioRelay, 1)
     if gpioSpeakerSwitcher is not None:
@@ -45,8 +60,10 @@ def powerAmp()
         }
         data = '{"entity_id": "' + hassSwitch + '"}'
         post(url, headers=headers, data=data)
+    flockRelease(fd)
 
 def unpowerAmp()
+    fd = flockAquire("/var/lock/gpio")
     if hassSwitch is not None:
         url = "http://" + hassHost + "/api/services/switch/turn_off"
         headers = {
@@ -67,6 +84,7 @@ def unpowerAmp()
                break
         if allMute:
             GPIO.output(gpioRelay, 0)
+    flockRelease(fd)
 
 def onConnect(client, userdata, flags, rc):
     print("Connected to mqtt server with result code " + str(rc))
