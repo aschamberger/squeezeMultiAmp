@@ -12,6 +12,7 @@ services:
                 max-file: 3
         devices:
             - "/dev/snd"
+            - "/dev/gpiomem"
         ipc: host
         volumes:
             - /usr/local/src/sma:/usr/local/src/sma
