@@ -73,6 +73,8 @@ services:
               target: /config/squeeze.name
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH1}
+            - MIXER_DEVICE=${MIXER_CH1}
+            - VOLUME_CONTROL=${SOFTVOL_CH1}
             - MAC_ADDRESS=02:00:00:00:00:01
             - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_A_SHUTDOWN_ON_AMP_MUTE}
             - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_A_MUTE_ON_PLAYERS}
@@ -93,6 +95,8 @@ services:
               target: /config/squeeze.name
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH2}
+            - MIXER_DEVICE=${MIXER_CH2}
+            - VOLUME_CONTROL=${SOFTVOL_CH2}
             - MAC_ADDRESS=02:00:00:00:00:02
             - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_A_SHUTDOWN_ON_AMP_MUTE}
             - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_A_MUTE_ON_PLAYERS}
@@ -113,6 +117,8 @@ services:
               target: /config/squeeze.name
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH3}
+            - MIXER_DEVICE=${MIXER_CH3}
+            - VOLUME_CONTROL=${SOFTVOL_CH3}
             - MAC_ADDRESS=02:00:00:00:00:03
             - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_A_SHUTDOWN_ON_AMP_MUTE}
             - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_A_MUTE_ON_PLAYERS}
@@ -133,6 +139,8 @@ services:
               target: /config/squeeze.name
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH4}
+            - MIXER_DEVICE=${MIXER_CH4}
+            - VOLUME_CONTROL=${SOFTVOL_CH4}
             - MAC_ADDRESS=02:00:00:00:00:04
             - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_A_SHUTDOWN_ON_AMP_MUTE}
             - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_A_MUTE_ON_PLAYERS}
@@ -153,6 +161,8 @@ services:
               target: /config/squeeze.name
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH5}
+            - MIXER_DEVICE=${MIXER_CH5}
+            - VOLUME_CONTROL=${SOFTVOL_CH5}
             - MAC_ADDRESS=02:00:00:00:00:05
             - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_B_SHUTDOWN_ON_AMP_MUTE}
             - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_B_MUTE_ON_PLAYERS}
@@ -173,6 +183,8 @@ services:
               target: /config/squeeze.name
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH6}
+            - MIXER_DEVICE=${MIXER_CH6}
+            - VOLUME_CONTROL=${SOFTVOL_CH6}
             - MAC_ADDRESS=02:00:00:00:00:06
             - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_B_SHUTDOWN_ON_AMP_MUTE}
             - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_B_MUTE_ON_PLAYERS}
@@ -193,6 +205,8 @@ services:
               target: /config/squeeze.name
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH7}
+            - MIXER_DEVICE=${MIXER_CH7}
+            - VOLUME_CONTROL=${SOFTVOL_CH7}
             - MAC_ADDRESS=02:00:00:00:00:07
             - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_B_SHUTDOWN_ON_AMP_MUTE}
             - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_B_MUTE_ON_PLAYERS}
@@ -213,6 +227,8 @@ services:
               target: /config/squeeze.name
         environment:
             - OUTPUT_DEVICE=${OUTPUT_CH8}
+            - MIXER_DEVICE=${MIXER_CH8}
+            - VOLUME_CONTROL=${SOFTVOL_CH8}
             - MAC_ADDRESS=02:00:00:00:00:08
             - GPIO_AMP_SHUTDOWN_ON_AMP_MUTE=${GPIO_AMP_B_SHUTDOWN_ON_AMP_MUTE}
             - GPIO_AMP_MUTE_ON_PLAYERS=${GPIO_AMP_B_MUTE_ON_PLAYERS}
