@@ -76,6 +76,7 @@ services:
             - OUTPUT_DEVICE=${OUTPUT_CH1}
             - MIXER_DEVICE=${MIXER_CH1}
             - VOLUME_CONTROL=${SOFTVOL_CH1}
+            - INPUT_DEVICE=${INPUT_CH1}
             - MIXER_DEVICE_LINE=${MIXER_LI_CH1}
             - VOLUME_CONTROL_LINE=${SOFTVOL_LI_CH1}
             - MAC_ADDRESS=02:00:00:00:00:01
@@ -100,6 +101,7 @@ services:
             - OUTPUT_DEVICE=${OUTPUT_CH2}
             - MIXER_DEVICE=${MIXER_CH2}
             - VOLUME_CONTROL=${SOFTVOL_CH2}
+            - INPUT_DEVICE=${INPUT_CH2}
             - MIXER_DEVICE_LINE=${MIXER_LI_CH2}
             - VOLUME_CONTROL_LINE=${SOFTVOL_LI_CH2}
             - MAC_ADDRESS=02:00:00:00:00:02
@@ -124,6 +126,7 @@ services:
             - OUTPUT_DEVICE=${OUTPUT_CH3}
             - MIXER_DEVICE=${MIXER_CH3}
             - VOLUME_CONTROL=${SOFTVOL_CH3}
+            - INPUT_DEVICE=${INPUT_CH3}
             - MIXER_DEVICE_LINE=${MIXER_LI_CH3}
             - VOLUME_CONTROL_LINE=${SOFTVOL_LI_CH3}
             - MAC_ADDRESS=02:00:00:00:00:03
@@ -148,6 +151,7 @@ services:
             - OUTPUT_DEVICE=${OUTPUT_CH4}
             - MIXER_DEVICE=${MIXER_CH4}
             - VOLUME_CONTROL=${SOFTVOL_CH4}
+            - INPUT_DEVICE=${INPUT_CH4}
             - MIXER_DEVICE_LINE=${MIXER_LI_CH4}
             - VOLUME_CONTROL_LINE=${SOFTVOL_LI_CH4}
             - MAC_ADDRESS=02:00:00:00:00:04
@@ -172,6 +176,7 @@ services:
             - OUTPUT_DEVICE=${OUTPUT_CH5}
             - MIXER_DEVICE=${MIXER_CH5}
             - VOLUME_CONTROL=${SOFTVOL_CH5}
+            - INPUT_DEVICE=${INPUT_CH5}
             - MIXER_DEVICE_LINE=${MIXER_LI_CH5}
             - VOLUME_CONTROL_LINE=${SOFTVOL_LI_CH5}
             - MAC_ADDRESS=02:00:00:00:00:05
@@ -196,6 +201,7 @@ services:
             - OUTPUT_DEVICE=${OUTPUT_CH6}
             - MIXER_DEVICE=${MIXER_CH6}
             - VOLUME_CONTROL=${SOFTVOL_CH6}
+            - INPUT_DEVICE=${INPUT_CH6}
             - MIXER_DEVICE_LINE=${MIXER_LI_CH6}
             - VOLUME_CONTROL_LINE=${SOFTVOL_LI_CH6}
             - MAC_ADDRESS=02:00:00:00:00:06
@@ -220,6 +226,7 @@ services:
             - OUTPUT_DEVICE=${OUTPUT_CH7}
             - MIXER_DEVICE=${MIXER_CH7}
             - VOLUME_CONTROL=${SOFTVOL_CH7}
+            - INPUT_DEVICE=${INPUT_CH7}
             - MIXER_DEVICE_LINE=${MIXER_LI_CH7}
             - VOLUME_CONTROL_LINE=${SOFTVOL_LI_CH7}
             - MAC_ADDRESS=02:00:00:00:00:07
@@ -244,6 +251,7 @@ services:
             - OUTPUT_DEVICE=${OUTPUT_CH8}
             - MIXER_DEVICE=${MIXER_CH8}
             - VOLUME_CONTROL=${SOFTVOL_CH8}
+            - INPUT_DEVICE=${INPUT_CH8}
             - MIXER_DEVICE_LINE=${MIXER_LI_CH8}
             - VOLUME_CONTROL_LINE=${SOFTVOL_LI_CH8}
             - MAC_ADDRESS=02:00:00:00:00:08
