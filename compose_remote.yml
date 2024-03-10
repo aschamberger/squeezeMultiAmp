@@ -346,7 +346,7 @@ services:
     hermes2:
         extends:
             service: hermes_tpl
-        container_name: hermes1
+        container_name: hermes2
         profiles: ["${CH2_HERMES}"]
         volumes:
             - type: bind
@@ -365,7 +365,7 @@ services:
     hermes3:
         extends:
             service: hermes_tpl
-        container_name: hermes1
+        container_name: hermes3
         profiles: ["${CH3_HERMES}"]
         volumes:
             - type: bind
@@ -384,7 +384,7 @@ services:
     hermes4:
         extends:
             service: hermes_tpl
-        container_name: hermes1
+        container_name: hermes4
         profiles: ["${CH4_HERMES}"]
         volumes:
             - type: bind
@@ -403,7 +403,7 @@ services:
     hermes5:
         extends:
             service: hermes_tpl
-        container_name: hermes1
+        container_name: hermes5
         profiles: ["${CH5_HERMES}"]
         volumes:
             - type: bind
@@ -422,7 +422,7 @@ services:
     hermes6:
         extends:
             service: hermes_tpl
-        container_name: hermes1
+        container_name: hermes6
         profiles: ["${CH6_HERMES}"]
         volumes:
             - type: bind
@@ -441,7 +441,7 @@ services:
     hermes7:
         extends:
             service: hermes_tpl
-        container_name: hermes1
+        container_name: hermes7
         profiles: ["${CH7_HERMES}"]
         volumes:
             - type: bind
@@ -460,7 +460,7 @@ services:
     hermes8:
         extends:
             service: hermes_tpl
-        container_name: hermes1
+        container_name: hermes8
         profiles: ["${CH8_HERMES}"]
         volumes:
             - type: bind
