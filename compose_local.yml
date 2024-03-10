@@ -29,6 +29,9 @@ services:
               source: /etc/asound.conf
               target: /etc/asound.conf
               read_only: true
+        labels:
+            - "com.centurylinklabs.watchtower.enable=true"
+            - "com.centurylinklabs.watchtower.scope=supervisor"
     squeezelite_tpl:
         container_name: squeezelite_tpl
         profiles: ["tpl"]
@@ -63,6 +66,9 @@ services:
             - PSU_POWER_DOWN_DELAY=${PSU_POWER_DOWN_DELAY}
             - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
             - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+        labels:
+            - "com.centurylinklabs.watchtower.enable=true"
+            - "com.centurylinklabs.watchtower.scope=squeezelite"
     squeezelite1:
         extends:
             service: squeezelite_tpl
@@ -295,6 +301,9 @@ services:
             - PSU_POWER_DOWN_DELAY=${PSU_POWER_DOWN_DELAY}
             - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
             - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+        labels:
+            - "com.centurylinklabs.watchtower.enable=false"
+            - "com.centurylinklabs.watchtower.scope=hermes"
     hermes1:
         extends:
             service: hermes_tpl

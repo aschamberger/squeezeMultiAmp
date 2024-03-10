@@ -1,8 +1,32 @@
 services:
+    watchtower_supervisor:
+        image: containrrr/watchtower
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        command: --debug --http-api-update
+        environment:
+            - WATCHTOWER_HTTP_API_TOKEN=${WATCHTOWER_API_TOKEN}
+            - WATCHTOWER_SCOPE=supervisor
+        labels:
+            - "com.centurylinklabs.watchtower.enable=false"
+        ports:
+            - 127.0.0.1:${WATCHTOWER_SUPERVISOR_PORT}:8080
+    watchtower_squeezelite:
+        image: containrrr/watchtower
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        command: --debug --http-api-update
+        environment:
+            - WATCHTOWER_HTTP_API_TOKEN=${WATCHTOWER_API_TOKEN}
+            - WATCHTOWER_SCOPE=squeezelite
+        labels:
+            - "com.centurylinklabs.watchtower.enable=false"
+        ports:
+            - 127.0.0.1:${WATCHTOWER_SQUEEZELITE_PORT}:8080
     supervisor:
         container_name: supervisor
         profiles: ["supervisor"]
-        image: ghcr.io/aschamberger/sma-supervisor:latest
+        image: ghcr.io/aschamberger/sma-supervisor:${CONTAINER_TAG_SUPERVISOR:-latest}
         network_mode: host
         restart: unless-stopped
         logging:
@@ -27,10 +51,13 @@ services:
               source: /etc/asound.conf
               target: /etc/asound.conf
               read_only: true
+        labels:
+            - "com.centurylinklabs.watchtower.enable=true"
+            - "com.centurylinklabs.watchtower.scope=supervisor"
     squeezelite_tpl:
         container_name: squeezelite_tpl
         profiles: ["tpl"]
-        image: ghcr.io/aschamberger/sma-squeezelite:latest
+        image: ghcr.io/aschamberger/sma-squeezelite:${CONTAINER_TAG_SQUEEZELITE:-latest}
         network_mode: host
         restart: unless-stopped
         logging:
@@ -59,6 +86,9 @@ services:
             - PSU_POWER_DOWN_DELAY=${PSU_POWER_DOWN_DELAY}
             - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
             - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+        labels:
+            - "com.centurylinklabs.watchtower.enable=true"
+            - "com.centurylinklabs.watchtower.scope=squeezelite"
     squeezelite1:
         extends:
             service: squeezelite_tpl
@@ -291,6 +321,9 @@ services:
             - PSU_POWER_DOWN_DELAY=${PSU_POWER_DOWN_DELAY}
             - GPIO_PSU_RELAY=${GPIO_PSU_RELAY}
             - GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN=${GPIO_PSU_RELAY_OFF_ON_AMP_SHUTDOWN}
+        labels:
+            - "com.centurylinklabs.watchtower.enable=false"
+            - "com.centurylinklabs.watchtower.scope=hermes"
     hermes1:
         extends:
             service: hermes_tpl
