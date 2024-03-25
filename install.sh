@@ -84,6 +84,11 @@ sudo chmod 777 /var/lib/alsa
 sudo chown -R root:audio /var/lib/alsa
 sudo chmod -R g+w /var/lib/alsa
 
+# Create own run folder for line in
+sudo mkdir -p /run/line_in
+sudo chmod 777 /run/line_in
+sudo chown -R root:audio /run/line_in
+
 # Changing ALSA card IDs with udev
 sudo cp /usr/local/src/sma/85-my-usb-audio.rules /etc/udev/rules.d/85-my-usb-audio.rules
 
