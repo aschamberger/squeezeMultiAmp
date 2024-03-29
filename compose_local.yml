@@ -80,6 +80,7 @@ services:
               source: /etc/opt/squeezelite/squeeze1.name
               target: /config/squeeze.name
         environment:
+            - SQUEEZELITE_LOGGING=${SQUEEZELITE_LOGGING_CH1}
             - OUTPUT_DEVICE=${OUTPUT_CH1}
             - MIXER_DEVICE=${MIXER_CH1}
             - VOLUME_CONTROL=${SOFTVOL_CH1}
@@ -105,6 +106,7 @@ services:
               source: /etc/opt/squeezelite/squeeze2.name
               target: /config/squeeze.name
         environment:
+            - SQUEEZELITE_LOGGING=${SQUEEZELITE_LOGGING_CH2}
             - OUTPUT_DEVICE=${OUTPUT_CH2}
             - MIXER_DEVICE=${MIXER_CH2}
             - VOLUME_CONTROL=${SOFTVOL_CH2}
@@ -130,6 +132,7 @@ services:
               source: /etc/opt/squeezelite/squeeze3.name
               target: /config/squeeze.name
         environment:
+            - SQUEEZELITE_LOGGING=${SQUEEZELITE_LOGGING_CH3}
             - OUTPUT_DEVICE=${OUTPUT_CH3}
             - MIXER_DEVICE=${MIXER_CH3}
             - VOLUME_CONTROL=${SOFTVOL_CH3}
@@ -155,6 +158,7 @@ services:
               source: /etc/opt/squeezelite/squeeze4.name
               target: /config/squeeze.name
         environment:
+            - SQUEEZELITE_LOGGING=${SQUEEZELITE_LOGGING_CH4}
             - OUTPUT_DEVICE=${OUTPUT_CH4}
             - MIXER_DEVICE=${MIXER_CH4}
             - VOLUME_CONTROL=${SOFTVOL_CH4}
@@ -180,6 +184,7 @@ services:
               source: /etc/opt/squeezelite/squeeze5.name
               target: /config/squeeze.name
         environment:
+            - SQUEEZELITE_LOGGING=${SQUEEZELITE_LOGGING_CH5}
             - OUTPUT_DEVICE=${OUTPUT_CH5}
             - MIXER_DEVICE=${MIXER_CH5}
             - VOLUME_CONTROL=${SOFTVOL_CH5}
@@ -205,6 +210,7 @@ services:
               source: /etc/opt/squeezelite/squeeze6.name
               target: /config/squeeze.name
         environment:
+            - SQUEEZELITE_LOGGING=${SQUEEZELITE_LOGGING_CH6}
             - OUTPUT_DEVICE=${OUTPUT_CH6}
             - MIXER_DEVICE=${MIXER_CH6}
             - VOLUME_CONTROL=${SOFTVOL_CH6}
@@ -230,6 +236,7 @@ services:
               source: /etc/opt/squeezelite/squeeze7.name
               target: /config/squeeze.name
         environment:
+            - SQUEEZELITE_LOGGING=${SQUEEZELITE_LOGGING_CH7}
             - OUTPUT_DEVICE=${OUTPUT_CH7}
             - MIXER_DEVICE=${MIXER_CH7}
             - VOLUME_CONTROL=${SOFTVOL_CH7}
@@ -255,6 +262,7 @@ services:
               source: /etc/opt/squeezelite/squeeze8.name
               target: /config/squeeze.name
         environment:
+            - SQUEEZELITE_LOGGING=${SQUEEZELITE_LOGGING_CH8}
             - OUTPUT_DEVICE=${OUTPUT_CH8}
             - MIXER_DEVICE=${MIXER_CH8}
             - VOLUME_CONTROL=${SOFTVOL_CH8}
