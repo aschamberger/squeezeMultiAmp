@@ -51,7 +51,7 @@ rm -r squeezeMultiAmp-main
 wget https://github.com/aschamberger/sma-supervisor/archive/main.zip
 unzip main.zip
 rm main.zip
-mv sma-supervisor-main supervisior
+mv sma-supervisor-main supervisor
 # Download squeezelite
 wget https://github.com/aschamberger/sma-squeezelite/archive/main.zip
 unzip main.zip
