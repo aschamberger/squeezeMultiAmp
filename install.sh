@@ -76,18 +76,18 @@ sudo cp /usr/local/src/sma/two_4ch.asound.conf /etc/asound.conf
 
 # Default equalizer config with proper permissions created that squeezelite dockers can run rootless.
 sudo mkdir -p /etc/opt/eq
-sudo chmod 777 /etc/opt/eq
+sudo chmod 0777 /etc/opt/eq
 sudo chown -R root:audio /etc/opt/eq
 sudo chmod g+s /etc/opt/eq
 
 # Set permissions to be able to store from container
-sudo chmod 777 /var/lib/alsa
+sudo chmod 0777 /var/lib/alsa
 sudo chown -R root:audio /var/lib/alsa
 sudo chmod -R g+w /var/lib/alsa
 
 # Create own run folder for line in
 sudo mkdir -p /run/line_in
-sudo chmod 777 /run/line_in
+sudo chmod 0777 /run/line_in
 sudo chown -R root:audio /run/line_in
 
 # Changing ALSA card IDs with udev
@@ -103,7 +103,6 @@ sudo udevadm trigger -c add -s sound
 sudo udevadm trigger --attr-match=subsystem=usb
 
 # Allow passwordless reboot/shutdown from the supervisior
+sudo cp /usr/local/src/sma/00-reboot-shutdown.rules /etc/polkit-1/rules.d/00-reboot-shutdown.rules
 # old polkit version in pi os does not support new config format
-#sudo mkdir -p /etc/polkit-1/rules.d/
-#sudo cp /usr/local/src/sma/00-reboot-shutdown.rules /etc/polkit-1/rules.d/00-reboot-shutdown.rules
-sudo cp /usr/local/src/sma/00-reboot-shutdown.pkla /etc/polkit-1/localauthority/50-local.d/00-reboot-shutdown.pkla
+#sudo cp /usr/local/src/sma/00-reboot-shutdown.pkla /etc/polkit-1/localauthority/50-local.d/00-reboot-shutdown.pkla
