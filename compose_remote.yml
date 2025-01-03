@@ -36,7 +36,6 @@ services:
                 max-file: 3
         devices:
             - "/dev/snd"
-            - "/dev/gpiochip0"
             - "/dev/bus/usb"
         ipc: host
         volumes:
@@ -67,7 +66,6 @@ services:
                 max-file: 3
         devices:
             - "/dev/snd"
-            - "/dev/gpiochip0"
         ipc: host
         volumes:
             - /etc/opt/eq:/etc/opt/eq
